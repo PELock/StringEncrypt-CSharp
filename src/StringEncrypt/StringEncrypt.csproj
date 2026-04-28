@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PELock.StringEncrypt</RootNamespace>
+    <AssemblyName>StringEncrypt</AssemblyName>
+    <Authors>Bartosz Wójcik</Authors>
+    <Company>PELock</Company>
+    <Product>StringEncrypt</Product>
+    <Description>Official .NET client for the StringEncrypt.com Web API — generate polymorphic decryptors for many programming languages.</Description>
+    <Copyright>Copyright © Bartosz Wójcik</Copyright>
+    <PackageId>StringEncrypt</PackageId>
+    <PackageTags>stringencrypt;encryption;obfuscation;api-client;code-generation</PackageTags>
+    <PackageProjectUrl>https://www.stringencrypt.com</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/PELock/StringEncrypt-CSharp</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- Repository root (two levels up from src/StringEncrypt/) -->
+    <PackageOutputPath>..\..\</PackageOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+    <!-- Include README images so NuGet.org can resolve ![...](img/...) in the packed readme -->
+    <None Include="..\..\img\**\*">
+      <Pack>true</Pack>
+      <PackagePath>img\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
