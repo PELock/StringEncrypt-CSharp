@@ -4,7 +4,7 @@
 //
 // In this example we will verify our activation code status.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com

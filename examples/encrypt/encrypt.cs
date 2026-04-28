@@ -4,7 +4,7 @@
 //
 // In this example we will encrypt sample string with default options.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com

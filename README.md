@@ -139,7 +139,7 @@ Ask yourself, did you ever put some sensitive content in your software that you 
 
 If any of these things were to fall into the **wrong hands**, they could be used to compromise your software or your infrastructure.
 
-![You don't want this to happen to your software.](img/database-password-plain-text.png)
+![You don't want this to happen to your software.](https://raw.githubusercontent.com/PELock/StringEncrypt-CSharp/main/img/database-password-plain-text.png)
 
 Take for example database passwords. A competitor could use them to view your database structure or dump all of its contents. You don't want to lose all your hard work because someone with a simple hex-editor can discover your password in plain text. 
 
@@ -149,7 +149,7 @@ I've decided to create a simple service called String Encrypt for developers, of
 
 String Encrypt can help you hide the things that shouldn't be visible at first glance to anyone with a hex-editor.
 
-![StringEncrypt main window](img/stringencrypt.png)
+![StringEncrypt main window](https://raw.githubusercontent.com/PELock/StringEncrypt-CSharp/main/img/stringencrypt.png)
 
 ### Say hello to polymorphic encryption!
 
@@ -189,27 +189,27 @@ The algorithm is always **unique**, the encryption keys are always **randomly se
 
 ## How to use StringEncrypt from C# / .NET code?
 
-Add the [StringEncrypt](https://www.nuget.org/packages/StringEncrypt/) package to your project (**1.0.0** — first release).
+Add the [StringEncrypt](https://www.nuget.org/packages/StringEncrypt/) package to your project (**1.0.1**).
 
 **Package Manager Console**
 
 ```powershell
-Install-Package StringEncrypt -Version 1.0.0
+Install-Package StringEncrypt -Version 1.0.1
 ```
 
 **.NET CLI**
 
 ```bash
-dotnet add package StringEncrypt --version 1.0.0
+dotnet add package StringEncrypt --version 1.0.1
 ```
 
 **Central Package Management or `PackageReference` in your `.csproj`**
 
 ```xml
-<PackageReference Include="StringEncrypt" Version="1.0.0" />
+<PackageReference Include="StringEncrypt" Version="1.0.1" />
 ```
 
-The **1.0.0** package targets **.NET 8.0**. Source and runnable samples live in this repository under `src/StringEncrypt` and `examples/`. Add `using StringEncrypt;` and create a **`StringEncryptClient`** instance to call the API.
+The **1.0.1** package targets **.NET 8.0**. Source and runnable samples live in this repository under `src/StringEncrypt` and `examples/`. Add `using PELock.StringEncrypt;` and use the **`StringEncrypt`** client class to call the API.
 
 ### Basic string encryption usage example (with default options)
 
@@ -220,7 +220,7 @@ The **1.0.0** package targets **.NET 8.0**. Source and runnable samples live in 
 //
 // In this example we will encrypt sample string with default options.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com
@@ -228,11 +228,11 @@ The **1.0.0** package targets **.NET 8.0**. Source and runnable samples live in 
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-using StringEncrypt;
+using PELock.StringEncrypt;
 
-using var client = new StringEncryptClient("YOUR-API-KEY-HERE"); // leave empty for demo mode
+using var stringEncrypt = new StringEncrypt("YOUR-API-KEY-HERE"); // leave empty for demo mode
 
-var result = await client.EncryptStringAsync("Hello!", "$label");
+var result = await stringEncrypt.EncryptStringAsync("Hello!", "$label");
 
 if (result is null) {
   Console.WriteLine("Cannot connect to the API.");
@@ -280,7 +280,7 @@ Console.WriteLine((result.Source ?? "") + Environment.NewLine);
 //
 // In this example we will encrypt sample string with default options.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com
@@ -288,10 +288,10 @@ Console.WriteLine((result.Source ?? "") + Environment.NewLine);
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-using StringEncrypt;
+using PELock.StringEncrypt;
 
-using var client = new StringEncryptClient("YOUR-API-KEY-HERE"); // leave empty for demo mode
-client
+using var stringEncrypt = new StringEncrypt("YOUR-API-KEY-HERE"); // leave empty for demo mode
+stringEncrypt
   .SetCompression(false)
   .SetUnicode(true)
   .SetLangLocale("en_US.utf8")
@@ -301,7 +301,7 @@ client
   .SetCmdMax(3)
   .SetLocal(false);
 
-var result = await client.EncryptStringAsync("Hello!", "wszLabel");
+var result = await stringEncrypt.EncryptStringAsync("Hello!", "wszLabel");
 
 if (result is null) {
   Console.WriteLine("Cannot connect to the API.");
@@ -350,7 +350,7 @@ Console.WriteLine((result.Source ?? "") + Environment.NewLine);
 //
 // In this example we will encrypt sample file with default options.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com
@@ -358,10 +358,10 @@ Console.WriteLine((result.Source ?? "") + Environment.NewLine);
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-using StringEncrypt;
+using PELock.StringEncrypt;
 
-using var client = new StringEncryptClient("YOUR-API-KEY-HERE"); // leave empty for demo mode
-client
+using var stringEncrypt = new StringEncrypt("YOUR-API-KEY-HERE"); // leave empty for demo mode
+stringEncrypt
   .SetCompression(false)
   .SetUnicode(true)
   .SetLangLocale("en_US.utf8")
@@ -375,7 +375,7 @@ client
 var samplePath = Path.Combine(AppContext.BaseDirectory, "sample.bin");
 
 // Full license: raw bytes from file (demo may return ErrorCode.Demo).
-var result = await client.EncryptFileContentsAsync(samplePath, "$label");
+var result = await stringEncrypt.EncryptFileContentsAsync(samplePath, "$label");
 
 if (result is null) {
   Console.WriteLine("Cannot connect to the API or file is missing/empty.");
@@ -425,7 +425,7 @@ This example shows how to get information about the current activation code and 
 //
 // In this example we will verify our activation code status.
 //
-// Version        : v1.0.0
+// Version        : v1.0.1
 // Language       : C#
 // Author         : Bartosz Wójcik
 // Project page   : https://www.stringencrypt.com
@@ -433,11 +433,11 @@ This example shows how to get information about the current activation code and 
 //
 ///////////////////////////////////////////////////////////////////////////////
 
-using StringEncrypt;
+using PELock.StringEncrypt;
 
-using var client = new StringEncryptClient("");
+using var stringEncrypt = new StringEncrypt("");
 
-var result = await client.IsDemoAsync();
+var result = await stringEncrypt.IsDemoAsync();
 
 if (result is null) {
   Console.WriteLine("Cannot connect to the API.");
