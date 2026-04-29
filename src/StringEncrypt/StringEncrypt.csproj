@@ -16,6 +16,7 @@
     <PackageProjectUrl>https://www.stringencrypt.com</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>img/stringencrypt-icon-128.png</PackageIcon>
     <RepositoryUrl>https://github.com/PELock/StringEncrypt-CSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
